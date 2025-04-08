@@ -24,7 +24,17 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('FutGoal App'), centerTitle: true),
+      appBar: AppBar(
+        title: const Text(
+          'FutGoal App',
+          style: TextStyle(
+            fontFamily: 'RobotoSlab', // Fuente estilizada
+            fontWeight: FontWeight.bold,
+            fontSize: 22,
+          ),
+        ),
+        centerTitle: true,
+      ),
       body: Stack(
         children: [
           // Fondo decorativo
@@ -49,26 +59,55 @@ class HomeScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 30),
-                ElevatedButton(
-                  onPressed: () {
-                    _mostrarFormularioAnimado(context);
+                const SizedBox(height: 15),
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    double fontSize =
+                        14; // Default font size for smaller screens
+                    if (constraints.maxWidth > 600) {
+                      fontSize =
+                          18; // Larger font size for wider screens (e.g., tablets)
+                    } else if (constraints.maxWidth > 400) {
+                      fontSize = 16; // Medium font size for medium screens
+                    }
+                    return Text(
+                      'Si quieres estar al dia en el mundo del futbol escribenos...',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: fontSize,
+                        color: const Color.fromARGB(255, 255, 255, 255),
+                        fontWeight: FontWeight.normal,
+                      ),
+                    );
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: Colors.green[800],
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 40,
-                      vertical: 15,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
-                  child: const Text(
-                    'Contáctanos',
-                    style: TextStyle(fontSize: 18),
-                  ),
+                ),
+                const SizedBox(height: 30),
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    return ElevatedButton(
+                      onPressed: () {
+                        _mostrarFormularioAnimado(context);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.green[800],
+                        padding: EdgeInsets.symmetric(
+                          horizontal:
+                              constraints.maxWidth * 0.2 > 40
+                                  ? constraints.maxWidth * 0.2
+                                  : 40,
+                          vertical: 15,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      child: const Text(
+                        'Contáctanos',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
@@ -149,7 +188,7 @@ class _ContactFormDialogState extends State<ContactFormDialog> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const Text(
-                    'Formulario de Contacto',
+                    'Muestranos tu opinión !!!',
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,

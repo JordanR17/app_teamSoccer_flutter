@@ -21,7 +21,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
   assets:
     - assets/images/soccer_background.jpg
     - assets/images/teams/

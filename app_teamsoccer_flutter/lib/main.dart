@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app_teamsoccer_flutter/screens/home_screen.dart';
 import 'package:app_teamsoccer_flutter/screens/team_details_screen.dart';
-import 'package:app_teamsoccer_flutter/screens/contact_form_screen.dart';
+// import 'package:app_teamsoccer_flutter/screens/contact_form_screen.dart'; // Eliminado
 import 'package:app_teamsoccer_flutter/screens/players_screen.dart';
 import 'package:app_teamsoccer_flutter/screens/player_details_screen.dart';
 import 'package:app_teamsoccer_flutter/screens/tournaments_screen.dart';
@@ -24,15 +24,14 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFF1B5E20), // Verde oscuro
+          backgroundColor: Color(0xFF1B5E20),
           foregroundColor: Colors.white,
           elevation: 0,
         ),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          backgroundColor: Color(0xFF1B5E20), // Fondo oscuro para el TabBar
-          selectedItemColor: Color(0xFFFFD700), // Amarillo dorado
-          unselectedItemColor:
-              Colors.white70, // Blanco tenue para los no seleccionados
+          backgroundColor: Color(0xFF1B5E20),
+          selectedItemColor: Color(0xFFFFD700),
+          unselectedItemColor: Colors.white70,
           showUnselectedLabels: true,
           type: BottomNavigationBarType.fixed,
           selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
@@ -43,8 +42,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const MainScaffold(child: HomeScreen()),
         '/teams': (context) => const MainScaffold(child: TeamsScreen()),
         '/team-details': (context) => const TeamDetailsScreen(),
-        '/contact-form':
-            (context) => const MainScaffold(child: ContactFormScreen()),
+        // '/contact-form': (context) => const MainScaffold(child: ContactFormScreen()), // Eliminado
         '/players': (context) => const MainScaffold(child: PlayersScreen()),
         '/player-details': (context) => const PlayerDetailsScreen(),
         '/tournaments':
@@ -70,7 +68,6 @@ class _MainScaffoldState extends State<MainScaffold> {
     '/teams': 1,
     '/players': 2,
     '/tournaments': 3,
-    '/contact-form': 4,
   };
 
   int getCurrentIndex() {
@@ -103,10 +100,7 @@ class _MainScaffoldState extends State<MainScaffold> {
             icon: Icon(Icons.emoji_events),
             label: 'Torneos',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.contact_mail),
-            label: 'Contacto',
-          ),
+          // Eliminado el ítem de contacto
         ],
       ),
     );
